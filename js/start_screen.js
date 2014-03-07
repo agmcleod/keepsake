@@ -1,8 +1,8 @@
 var StartScreen = function() {
   this.dialogues = [
-    new keepsake.Dialogue(keepsake.GRAY_FONT, "Why do we need to go back? There's nothing for us there anymore."),
-    new keepsake.Dialogue(keepsake.ORANGE_FONT, "There just is. I know it. There's something we forgot along the way."),
-    new keepsake.Dialogue(keepsake.BLUE_FONT, "Are you sure? We've come so far. Just to go right back...")
+    new keepsake.Dialogue(keepsake.GRAY_FONT, "Why do we need to go back?\nThere's nothing for us there anymore."),
+    new keepsake.Dialogue(keepsake.ORANGE_FONT, "There just is. I know it. There's something\nwe forgot along the way."),
+    new keepsake.Dialogue(keepsake.BLUE_FONT, "Are you sure? We've come so far.\nJust to go right back...")
   ];
   this.titleMusic = game.add.audio('title', 1, true);
 
@@ -36,7 +36,7 @@ StartScreen.prototype.stage = function() {
   this.introFontObjects[5] = black;
   this.introFontObjects[6] = grayFour;
 
-  this.titleMusic.play();
+  this.titleMusic.play('', 0, 1, true);
 }
 
 StartScreen.prototype.stageDialogue = function() {
@@ -55,7 +55,7 @@ StartScreen.prototype.stageDialogue = function() {
 
 StartScreen.prototype.update = function() {
   if(!this.dialogueStaged) {
-    if(game.input.keyboard.justReleased(Phaser.Keyboard.ONE)) {
+    if(game.input.keyboard.isDown(Phaser.Keyboard.ONE)) {
       this.transition = 1;
       this.stageDialogue();
     }
@@ -68,6 +68,17 @@ StartScreen.prototype.update = function() {
     if(game.input.keyboard.isDown(Phaser.Keyboard.THREE)) {
       this.transition = 3;
       this.stageDialogue();
+    }
+  }
+  else {
+    if(game.input.keyboard.justReleased(Phaser.Keyboard.SPACEBAR)) {
+      var nextDialogue = this.currentDialogue + 1;
+      if(keepsake.DialogueManager.switchDialogue(this.dialogues, nextDialogue, this.currentDialogue)) {
+        this.currentDialogue++;
+      }
+      else {
+
+      }
     }
   }
 }
