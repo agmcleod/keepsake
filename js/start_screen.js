@@ -1,14 +1,9 @@
 var StartScreen = function() {
-  this.dialogues = [{
-    font: keepsake.GRAY_FONT,
-    text: "Why do we need to go back? There's nothing for us there anymore."
-  }, {
-    font: keepsake.ORANGE_FONT,
-    text: "There just is. I know it. There's something we forgot along the way."
-  }, {
-    font: keepsake.BLUE_FONT,
-    text: "Are you sure? We've come so far. Just to go right back..."
-  }];
+  this.dialogues = [
+    new keepsake.Dialogue(keepsake.GRAY_FONT, "Why do we need to go back? There's nothing for us there anymore."),
+    new keepsake.Dialogue(keepsake.ORANGE_FONT, "There just is. I know it. There's something we forgot along the way."),
+    new keepsake.Dialogue(keepsake.BLUE_FONT, "Are you sure? We've come so far. Just to go right back...")
+  ];
   this.titleMusic = game.add.audio('title', 1, true);
 
   this.introFontObjects = Array(7);
@@ -55,7 +50,7 @@ StartScreen.prototype.stageDialogue = function() {
   }
   this.introFontObjects = null;
 
-  this.dialogues[0].bitmapText = game.add.bitmapText()
+  this.dialogues[0].stageBitmapText();
 }
 
 StartScreen.prototype.update = function() {
