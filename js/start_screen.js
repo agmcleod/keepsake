@@ -12,7 +12,7 @@ var StartScreen = function() {
 StartScreen.prototype.cleanup = function() {
   this.titleMusic.stop();
   this.background.destroy();
-  this.dialogueBox.destroy();
+  keepsake.DialogueManager.cleanup();
 }
 
 StartScreen.prototype.stage = function() {
@@ -57,7 +57,7 @@ StartScreen.prototype.spaceBarEvent = function() {
 
 StartScreen.prototype.stageDialogue = function() {
   this.dialogueStaged = true;
-  this.dialogueBox = game.add.sprite(0, game.height - 300, 'messagebox');
+  keepsake.DialogueManager.stage();
   this.currentDialogue = 0;
 
   // this may trigger garbage collection, watch for pauses
