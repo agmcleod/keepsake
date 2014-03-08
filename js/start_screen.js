@@ -9,10 +9,16 @@ var StartScreen = function() {
   this.introFontObjects = Array(7);
 }
 
+StartScreen.prototype.cleanup = function() {
+  this.titleMusic.stop();
+  this.background.destroy();
+  this.dialogueBox.destroy();
+}
+
 StartScreen.prototype.stage = function() {
   var y = 668;
   var x = 350;
-  game.add.sprite(0, 0, 'title');
+  this.background = game.add.sprite(0, 0, 'title');
 
   var grayOne = game.add.bitmapText(x, y, "Press ", { font: keepsake.GRAY_FONT, align: 'left' });
   var offset = grayOne.width
@@ -37,6 +43,16 @@ StartScreen.prototype.stage = function() {
   this.introFontObjects[6] = grayFour;
 
   this.titleMusic.play('', 0, 1, true);
+}
+
+StartScreen.prototype.spaceBarEvent = function() {
+  var nextDialogue = this.currentDialogue + 1;
+  if(keepsake.DialogueManager.switchDialogue(this.dialogues, nextDialogue, this.currentDialogue)) {
+    this.currentDialogue++;
+  }
+  else {
+    loadPlayScreen();
+  }
 }
 
 StartScreen.prototype.stageDialogue = function() {
@@ -68,17 +84,6 @@ StartScreen.prototype.update = function() {
     if(game.input.keyboard.isDown(Phaser.Keyboard.THREE)) {
       this.transition = 3;
       this.stageDialogue();
-    }
-  }
-  else {
-    if(game.input.keyboard.justReleased(Phaser.Keyboard.SPACEBAR)) {
-      var nextDialogue = this.currentDialogue + 1;
-      if(keepsake.DialogueManager.switchDialogue(this.dialogues, nextDialogue, this.currentDialogue)) {
-        this.currentDialogue++;
-      }
-      else {
-
-      }
     }
   }
 }

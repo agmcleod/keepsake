@@ -94,6 +94,17 @@ function create() {
   keepsake.startScreen = new StartScreen();
   keepsake.startScreen.stage();
   keepsake.currentScreen = keepsake.startScreen;
+  keepsake.space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  keepsake.space_key.onDown.add(proxySpaceEvent, this);
+}
+
+function loadPlayScreen() {
+  keepsake.startScreen.cleanup();
+  keepsake.currentScreen = new PlayScreen();
+}
+
+function proxySpaceEvent() {
+  keepsake.currentScreen.spaceBarEvent();
 }
 
 function update() {
