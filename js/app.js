@@ -3,7 +3,7 @@ var keepsake = {};
 
 function preload() {
   // images
-  game.load.image('bear', 'data/images/items/bear.png');
+  game.load.spritesheet('bear', 'data/images/items/bear.png', 165, 180);
   game.load.image('bear-inventory', 'data/images/items/inventory/bear.png');
   game.load.image('blank', 'data/images/stage4/blank.png');
 
@@ -20,9 +20,9 @@ function preload() {
   game.load.image('inventory', 'data/images/inventory.png');
   game.load.image('messagebox', 'data/images/messagebox.png');
 
-  game.load.image('paper', 'data/images/items/paper.png');
+  game.load.spritesheet('paper', 'data/images/items/paper.png', 182, 117);
   game.load.image('paper-inventory', 'data/images/items/inventory/paper.png');
-  game.load.image('ring', 'data/images/items/ring.png');
+  game.load.spritesheet('ring', 'data/images/items/ring.png', 46, 42);
   game.load.image('ring-inventory', 'data/images/items/inventory/ring.png');  
   game.load.image('title', 'data/images/title.png');
 
@@ -91,16 +91,33 @@ function create() {
   keepsake.WHITE_FONT = '32px AveriaWhite';
   keepsake.WHITE_ITALIC_FONT = '32px AveriaWhiteItalic';
 
+  keepsake.playScreen = new PlayScreen();
   keepsake.startScreen = new StartScreen();
+
   keepsake.startScreen.stage();
   keepsake.currentScreen = keepsake.startScreen;
-  keepsake.space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  keepsake.space_key = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   keepsake.space_key.onDown.add(proxySpaceEvent, this);
+
+  keepsake.one_key = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
+  keepsake.two_key = game.input.keyboard.addKey(Phaser.Keyboard.TWO);
+  keepsake.three_key = game.input.keyboard.addKey(Phaser.Keyboard.THREE);
+
+  keepsake.one_key.onDown.add(function() {
+    keepsake.currentScreen.keyEvent('ONE')
+  }, this);
+  keepsake.two_key.onDown.add(function() {
+    keepsake.currentScreen.keyEvent('TWO')
+  }, this);
+  keepsake.three_key.onDown.add(function() {
+    keepsake.currentScreen.keyEvent('THREE')
+  }, this);
 }
 
 function loadPlayScreen() {
   keepsake.startScreen.cleanup();
-  keepsake.currentScreen = new PlayScreen();
+  keepsake.currentScreen = keepsake.playScreen;
+  keepsake.currentScreen.stage();
 }
 
 function proxySpaceEvent() {

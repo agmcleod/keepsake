@@ -15,6 +15,22 @@ StartScreen.prototype.cleanup = function() {
   keepsake.DialogueManager.cleanup();
 }
 
+StartScreen.prototype.keyEvent = function(key) {
+  switch(key) {
+    case 'ONE':
+      this.stageDialogue();
+      break;
+    case 'TWO':
+      keepsake.playScreen.levelOne.startLayer = 1;
+      this.stageDialogue();
+      break;
+    case 'THREE':
+      keepsake.playScreen.levelOne.startLayer = 2;
+      this.stageDialogue();
+      break;
+  }
+}
+
 StartScreen.prototype.stage = function() {
   var y = 668;
   var x = 350;
@@ -70,20 +86,5 @@ StartScreen.prototype.stageDialogue = function() {
 }
 
 StartScreen.prototype.update = function() {
-  if(!this.dialogueStaged) {
-    if(game.input.keyboard.isDown(Phaser.Keyboard.ONE)) {
-      this.transition = 1;
-      this.stageDialogue();
-    }
-
-    if(game.input.keyboard.isDown(Phaser.Keyboard.TWO)) {
-      this.transition = 2;
-      this.stageDialogue();
-    }
-
-    if(game.input.keyboard.isDown(Phaser.Keyboard.THREE)) {
-      this.transition = 3;
-      this.stageDialogue();
-    }
-  }
+  
 }
