@@ -24,6 +24,7 @@ var LevelOne = function() {
     this.showDialogue = true;
     keepsake.DialogueManager.show();
     this.item.destroy();
+    this.item = null;
     this.dialogues[0].stageBitmapText();
   });
 
