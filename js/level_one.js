@@ -16,7 +16,16 @@ var LevelOne = function() {
   ], false);
 
   var layerTwo = new Layer('blue1', 'scene1-blue', null, []);
-  var layerThree = new Layer('grey1', 'scene1-grey', { image: 'ring', x: 300, y: 518 }, []);
+  var layerThree = new Layer('grey1', 'scene1-grey', { image: 'ring', x: 300, y: 518 }, [
+    new keepsake.Dialogue(keepsake.GRAY_ITALIC_FONT, "There's something on the ground here... maybe this is... It's a ring. Looks like something out of Wonderland. ...A bit tacky if you ask me.")
+  ]);
+
+  layerThree.attachItemCollectEvent(function() {
+    this.showDialogue = true;
+    keepsake.DialogueManager.show();
+    this.item.destroy();
+    this.dialogues[0].stageBitmapText();
+  });
 
   this.layers = [layerOne, layerTwo, layerThree];
 }
@@ -27,10 +36,6 @@ LevelOne.prototype.getCurrentLayer = function() {
 
 LevelOne.prototype.nextDialogue = function() {
   this.getCurrentLayer().nextDialogue();
-}
-
-LevelOne.prototype.showLayerOneDialogue = function() {
-  this.layers[0].showDialogue = true;
 }
 
 LevelOne.prototype.stage = function() {

@@ -14,7 +14,12 @@ var Layer = function(background, music, item, dialogues, showDialogue) {
   }
   this.music = game.add.audio(music, 1, true);
   this.dialogues = dialogues;
-  this.showDialogue = showDialogue; 
+  this.showDialogue = showDialogue;
+  this.currentDialogue = 0;
+}
+
+Layer.prototype.attachItemCollectEvent = function(fn) {
+  this.item.events.onInputDown.add(fn, this);
 }
 
 Layer.prototype.cleanup = function() {
@@ -34,12 +39,25 @@ Layer.prototype.hide = function() {
   keepsake.DialogueManager.hide();
 }
 
+Layer.prototype.nextDialogue = function() {
+  if(this.showDialogue) {
+    var nextDialogue = this.currentDialogue + 1;
+    if(keepsake.DialogueManager.switchDialogue(this.dialogues, nextDialogue, this.currentDialogue)) {
+      this.currentDialogue++;
+    }
+    else {
+      this.showDialogue = false;
+      keepsake.DialogueManager.hide();
+    }
+  }
+}
+
 Layer.prototype.outItem = function() {
-  
+  this.item.animations.play('idle');
 }
 
 Layer.prototype.overItem = function() {
-
+  this.item.animations.play('hover');
 }
 
 Layer.prototype.stage = function() {

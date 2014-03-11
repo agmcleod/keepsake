@@ -5,11 +5,15 @@ keepsake.DialogueManager = function() {
 keepsake.DialogueManager.cleanup = function() {
   this.dialogueBox.destroy();
   this.instructionText.destroy();
+  this.visible = false;
 }
 
 keepsake.DialogueManager.hide = function() {
-  this.dialogueBox.kill();
-  this.instructionText.destroy();
+  if(this.visible) {
+    this.visible = false;
+    this.dialogueBox.kill();
+    this.instructionText.destroy();
+  }
 }
 
 keepsake.DialogueManager.setupInstructions = function() {
@@ -17,12 +21,16 @@ keepsake.DialogueManager.setupInstructions = function() {
 }
 
 keepsake.DialogueManager.show = function() {
-  this.dialogueBox.revive();
-  this.setupInstructions();
+  if(!this.visible) {
+    this.visible = true;
+    this.dialogueBox = game.add.sprite(0, game.height - 300, 'messagebox');
+    this.setupInstructions();
+  }
 }
 
 keepsake.DialogueManager.stage = function() {
   this.dialogueBox = game.add.sprite(0, game.height - 300, 'messagebox');
+  this.visible = true;
   this.setupInstructions();
 }
 
