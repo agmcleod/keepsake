@@ -78,18 +78,6 @@ function preload() {
 }
 
 function create() {
-  keepsake.BLACK_FONT = '32px AveriaBlack';
-  keepsake.BLACK_ITALIC_FONT = '32px AveriaBlackItalic';
-  keepsake.BLUE_FONT = '32px AveriaBlue';
-  keepsake.BLUE_ITALIC_FONT = '32px AveriaBlueItalic';
-  keepsake.GRAY_FONT = '32px AveriaGray';
-  keepsake.GRAY_ITALIC_FONT = '32px AveriaGrayItalic';
-  keepsake.GREEN_FONT = '32px AveriaGreen';
-  keepsake.GREEN_ITALIC_FONT = '32px AveriaGreenItalic';
-  keepsake.ORANGE_FONT = '32px AveriaOrange';
-  keepsake.ORANGE_ITALIC_FONT = '32px AveriaOrangeItalic';
-  keepsake.WHITE_FONT = '32px AveriaWhite';
-  keepsake.WHITE_ITALIC_FONT = '32px AveriaWhiteItalic';
 
   keepsake.playScreen = new PlayScreen();
   keepsake.startScreen = new StartScreen();

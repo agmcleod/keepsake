@@ -4,10 +4,7 @@ keepsake.Dialogue = function(font, text) {
 }
 
 keepsake.Dialogue.prototype.stageBitmapText = function() {
-  this.bitmapText = game.add.bitmapText(keepsake.Dialogue.LEFT_TEXT_PADDING, keepsake.Dialogue.Y, this.text, {
-    font: this.font,
-    align: 'left'
-  });
+  this.bitmapText = game.add.bitmapText(keepsake.Dialogue.LEFT_TEXT_PADDING, keepsake.Dialogue.Y, this.font, this.text, 32);
 }
 
 keepsake.Dialogue.LEFT_TEXT_PADDING = 42;

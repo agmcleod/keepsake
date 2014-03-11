@@ -17,7 +17,7 @@ keepsake.DialogueManager.hide = function() {
 }
 
 keepsake.DialogueManager.setupInstructions = function() {
-  this.instructionText = game.add.bitmapText(600, 718, "Press Space to continue", { font: keepsake.BLACK_FONT, align: 'left' });
+  this.instructionText = game.add.bitmapText(600, 718, 'black', "Press Space to continue", 32);
 }
 
 keepsake.DialogueManager.show = function() {

@@ -1,8 +1,8 @@
 var StartScreen = function() {
   this.dialogues = [
-    new keepsake.Dialogue(keepsake.GRAY_FONT, "Why do we need to go back?\nThere's nothing for us there anymore."),
-    new keepsake.Dialogue(keepsake.ORANGE_FONT, "There just is. I know it. There's something\nwe forgot along the way."),
-    new keepsake.Dialogue(keepsake.BLUE_FONT, "Are you sure? We've come so far.\nJust to go right back...")
+    new keepsake.Dialogue('gray', "Why do we need to go back?\nThere's nothing for us there anymore."),
+    new keepsake.Dialogue('orange', "There just is. I know it. There's something\nwe forgot along the way."),
+    new keepsake.Dialogue('blue', "Are you sure? We've come so far.\nJust to go right back...")
   ];
   this.titleMusic = game.add.audio('title', 1, true);
 
@@ -36,19 +36,19 @@ StartScreen.prototype.stage = function() {
   var x = 350;
   this.background = game.add.sprite(0, 0, 'title');
 
-  var grayOne = game.add.bitmapText(x, y, "Press ", { font: keepsake.GRAY_FONT, align: 'left' });
-  var offset = grayOne.width
-  var orange = game.add.bitmapText(x + offset, y, '1', { font: keepsake.ORANGE_FONT, align: 'left' });
-  offset += orange.width;
-  var grayTwo = game.add.bitmapText(x + offset, y, ' or ', { font: keepsake.GRAY_FONT, align: 'left' });
-  offset += grayTwo.width;
-  var blue = game.add.bitmapText(x + offset, y, '2', { font: keepsake.BLUE_FONT, align: 'left' });
-  offset += blue.width;
-  var grayThree = game.add.bitmapText(x + offset, y, ' or ', { font: keepsake.GRAY_FONT, align: 'left' });
-  offset += grayThree.width;
-  var black = game.add.bitmapText(x + offset, y, '3', { font: keepsake.BLACK_FONT, align: 'left' });
-  offset += black.width;
-  var grayFour = game.add.bitmapText(x + offset, y, ' to start.', { font: keepsake.GRAY_FONT, align: 'left' });
+  var grayOne = game.add.bitmapText(x, y, 'gray', "Press ", 32);
+  var offset = grayOne.textWidth
+  var orange = game.add.bitmapText(x + offset, y, 'orange', '1', 32);
+  offset += orange.textWidth;
+  var grayTwo = game.add.bitmapText(x + offset, y, 'gray', ' or ', 32);
+  offset += grayTwo.textWidth;
+  var blue = game.add.bitmapText(x + offset, y, 'blue', '2', 32);
+  offset += blue.textWidth;
+  var grayThree = game.add.bitmapText(x + offset, y, 'gray', ' or ', 32);
+  offset += grayThree.textWidth;
+  var black = game.add.bitmapText(x + offset, y, 'black', '3', 32);
+  offset += black.textWidth;
+  var grayFour = game.add.bitmapText(x + offset, y, 'gray', ' to start.', 32);
 
   this.introFontObjects[0] = grayOne;
   this.introFontObjects[1] = orange;
