@@ -17,7 +17,7 @@ var LevelOne = function() {
 
   var layerTwo = new Layer('blue1', 'scene1-blue', null, []);
   var layerThree = new Layer('grey1', 'scene1-grey', { image: 'ring', x: 300, y: 518 }, [
-    new Dialogue('grayitalic', "There's something on the ground here...\nmaybe this is...\nIt's a ring.\nLooks like something out of Wonderland.\n...A bit tacky if you ask me.")
+    new Dialogue('grayitalic', "There's something on the ground here... maybe this is...\nIt's a ring. Looks like something out of Wonderland.\n...A bit tacky if you ask me.")
   ]);
 
   layerThree.attachItemCollectEvent(function() {
@@ -43,6 +43,10 @@ LevelOne.prototype.cleanup = function() {
   LevelHelpers.cleanup(this);
 };
 
+LevelOne.prototype.finishTransition = function() {
+  LevelHelpers.finishTransition(this);
+}
+
 LevelOne.prototype.getCurrentLayer = function() {
   return this.layers[this.currentLayer];
 }
@@ -60,4 +64,8 @@ LevelOne.prototype.switchLayer = function(i) {
   LevelHelpers.switchLayer(this, i);
 }
 
-LevelOne.prototype.update = function() {}
+LevelOne.prototype.update = function() {
+  if(this.transitioning) {
+    LevelHelpers.drawTransition(this);
+  }
+}

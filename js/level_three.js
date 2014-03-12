@@ -2,7 +2,7 @@ var LevelThree = function() {
   this.startLayer = 2;
   this.canMove = false;
 
-  var layerOne = new Layer('yellow3', 'scene3-yellow', { image: 'bear', x: 100, y: 400 }, [
+  var layerOne = new Layer('yellow3', 'scene3-yellow', { image: 'bear', x: 100, y: 200 }, [
     new Dialogue('orangeitalic', "Wow, I haven't seen this in a long time. I wonder...")
   ], false);
 
@@ -55,6 +55,10 @@ LevelThree.prototype.cleanup = function() {
   LevelHelpers.cleanup(this);
 };
 
+LevelThree.prototype.finishTransition = function() {
+  LevelHelpers.finishTransition(this);
+}
+
 LevelThree.prototype.getCurrentLayer = function() {
   return this.layers[this.currentLayer];
 }
@@ -74,4 +78,8 @@ LevelThree.prototype.switchLayer = function(i) {
   }
 }
 
-LevelThree.prototype.update = function() {}
+LevelThree.prototype.update = function() {
+  if(this.transitioning) {
+    LevelHelpers.drawTransition(this);
+  }
+}

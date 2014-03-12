@@ -56,6 +56,10 @@ LevelTwo.prototype.cleanup = function() {
   LevelHelpers.cleanup(this);
 };
 
+LevelTwo.prototype.finishTransition = function() {
+  LevelHelpers.finishTransition(this);
+}
+
 LevelTwo.prototype.getCurrentLayer = function() {
   return this.layers[this.currentLayer];
 }
@@ -75,4 +79,8 @@ LevelTwo.prototype.switchLayer = function(i) {
   }
 }
 
-LevelTwo.prototype.update = function() {}
+LevelTwo.prototype.update = function() {
+  if(this.transitioning) {
+    LevelHelpers.drawTransition(this);
+  }
+}

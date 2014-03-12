@@ -28,6 +28,7 @@ PlayScreen.prototype.nextLevel = function() {
     this.currentLevel.cleanup();
     this.currentLevel = this.levels[this.currentLevelIndex];
     this.currentLevel.stage();
+    LevelHelpers.transitionIn(this.currentLevel);
   }
 };
 

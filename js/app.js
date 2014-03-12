@@ -106,6 +106,7 @@ function loadPlayScreen() {
   keepsake.startScreen.cleanup();
   keepsake.currentScreen = keepsake.playScreen;
   keepsake.currentScreen.stage();
+  LevelHelpers.transitionIn(keepsake.currentScreen.currentLevel);
 }
 
 function proxySpaceEvent() {

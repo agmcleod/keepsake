@@ -63,6 +63,10 @@ LevelFour.prototype.endScene = function() {
   this.titleMusic.play('', 0, 1, true);
 }
 
+LevelFour.prototype.finishTransition = function() {
+  LevelHelpers.finishTransition(this);
+}
+
 LevelFour.prototype.loadSecondDialogue = function() {
   if(this.bearPlaced && this.paperPlaced && this.ringPlaced) {
     this.showDialogue = true;
@@ -116,6 +120,9 @@ LevelFour.prototype.switchLayer = function(i) {
 }
 
 LevelFour.prototype.update = function() {
+  if(this.transitioning) {
+    LevelHelpers.drawTransition(this);
+  }
   if(!this.showDialogue && game.input.mousePointer.isDown && (!this.bearPlaced || !this.paperPlaced || !this.ringPlaced)) {
     if(this.bearRect.contains(game.input.x, game.input.y) && !this.bearPlaced) {
       this.inventoryImages['bear'].destroy();
