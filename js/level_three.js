@@ -73,3 +73,5 @@ LevelThree.prototype.switchLayer = function(i) {
     LevelHelpers.switchLayer(this, i);
   }
 }
+
+LevelThree.prototype.update = function() {}

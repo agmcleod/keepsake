@@ -2,7 +2,8 @@ var PlayScreen = function() {
   var levelOne = new LevelOne();
   var levelTwo = new LevelTwo();
   var levelThree = new LevelThree();
-  this.levels = [levelOne, levelTwo, levelThree];
+  var levelFour = new LevelFour();
+  this.levels = [levelOne, levelTwo, levelThree, levelFour];
   this.currentLevelIndex = 0;
   this.currentLevel = this.levels[0];
 }
@@ -39,5 +40,5 @@ PlayScreen.prototype.spaceBarEvent = function() {
 }
 
 PlayScreen.prototype.update = function() {
-  
+  this.currentLevel.update();
 }

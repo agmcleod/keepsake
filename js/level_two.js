@@ -74,3 +74,5 @@ LevelTwo.prototype.switchLayer = function(i) {
     LevelHelpers.switchLayer(this, i);
   }
 }
+
+LevelTwo.prototype.update = function() {}

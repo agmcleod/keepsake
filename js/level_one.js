@@ -59,3 +59,5 @@ LevelOne.prototype.stage = function() {
 LevelOne.prototype.switchLayer = function(i) {
   LevelHelpers.switchLayer(this, i);
 }
+
+LevelOne.prototype.update = function() {}
