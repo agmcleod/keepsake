@@ -36,7 +36,7 @@ keepsake.DialogueManager.stage = function() {
 
 keepsake.DialogueManager.switchDialogue = function(dialogues, newIndex, currentIndex) {
   var d = dialogues[currentIndex];
-  d.bitmapText.destroy();
+  d.destroyBitmapText();
   if(dialogues[newIndex]) {
     dialogues[newIndex].stageBitmapText();
     return true;

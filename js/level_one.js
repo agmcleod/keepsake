@@ -21,12 +21,16 @@ var LevelOne = function() {
   ]);
 
   layerThree.attachItemCollectEvent(function() {
-    this.showDialogue = true;
     keepsake.DialogueManager.show();
     this.item.destroy();
     this.item = null;
-    this.dialogues[0].stageBitmapText();
+    this.showDialogue = true;
+    this.stageDialogue();
   });
+
+  layerThree.dialogueCompleteEvent = (function() {
+    this.layers[0].showDialogue = true;
+  }).bind(this);
 
   this.layers = [layerOne, layerTwo, layerThree];
 }

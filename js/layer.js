@@ -35,6 +35,9 @@ Layer.prototype.hide = function() {
   if(this.item) {
     this.item.kill();
   }
+  if(this.showDialogue) {
+    this.dialogues[this.currentDialogue].destroyBitmapText();
+  }
   this.background.kill();
   keepsake.DialogueManager.hide();
 }
@@ -48,6 +51,9 @@ Layer.prototype.nextDialogue = function() {
     else {
       this.showDialogue = false;
       keepsake.DialogueManager.hide();
+      if(typeof this.dialogueCompleteEvent === 'function') {
+        this.dialogueCompleteEvent();
+      }
     }
   }
 }
@@ -72,6 +78,11 @@ Layer.prototype.stage = function() {
     }
     else {
       keepsake.DialogueManager.stage();
+      this.dialogues[this.currentDialogue].stageBitmapText();
     }
   }
+}
+
+Layer.prototype.stageDialogue = function() {
+  this.dialogues[this.currentDialogue].stageBitmapText();
 }

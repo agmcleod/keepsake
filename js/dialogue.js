@@ -3,6 +3,12 @@ keepsake.Dialogue = function(font, text) {
   this.text = text;
 }
 
+keepsake.Dialogue.prototype.destroyBitmapText = function() {
+  if(this.bitmapText) {
+    this.bitmapText.destroy();
+  }
+}
+
 keepsake.Dialogue.prototype.stageBitmapText = function() {
   this.bitmapText = game.add.bitmapText(keepsake.Dialogue.LEFT_TEXT_PADDING, keepsake.Dialogue.Y, this.font, this.text, 32);
 }
