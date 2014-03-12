@@ -1,27 +1,27 @@
 var LevelOne = function() {
   this.startLayer = 0;
   var layerOne = new Layer('yellow1', 'scene1-yellow', null, [
-    new keepsake.Dialogue('orange', "Did you find something over there?"),
-    new keepsake.Dialogue('gray', "Yeah. Catch."),
-    new keepsake.Dialogue('grayitalic', "**tosses ring**"),
-    new keepsake.Dialogue('orange', "This can't be... is it?"),
-    new keepsake.Dialogue('blue', "What is it?"),
-    new keepsake.Dialogue('orange', "It's... a ring."),
-    new keepsake.Dialogue('gray', "Who would wear something like that?"),
-    new keepsake.Dialogue('orange', "It's mine. I lost it years ago."),
-    new keepsake.Dialogue('gray', "Where would you even get something like that?"),
-    new keepsake.Dialogue('orange', "It's been passed down through the family."),
-    new keepsake.Dialogue('gray', "So can we go now? You've found what you're looking for right?"),
-    new keepsake.Dialogue('orange', "This isn't what I'm looking for. I'm happy to have found it, but there's something else. We need to keep going.")
+    new Dialogue('orange', "Did you find something over there?"),
+    new Dialogue('gray', "Yeah. Catch."),
+    new Dialogue('grayitalic', "tosses ring"),
+    new Dialogue('orange', "This can't be... is it?"),
+    new Dialogue('blue', "What is it?"),
+    new Dialogue('orange', "It's... a ring."),
+    new Dialogue('gray', "Who would wear something like that?"),
+    new Dialogue('orange', "It's mine. I lost it years ago."),
+    new Dialogue('gray', "Where would you even get something like that?"),
+    new Dialogue('orange', "It's been passed down through the family."),
+    new Dialogue('gray', "So can we go now? You've found what you're\nlooking for right?"),
+    new Dialogue('orange', "This isn't what I'm looking for. I'm happy to have found it,\nbut there's something else. We need to keep going.")
   ], false);
 
   var layerTwo = new Layer('blue1', 'scene1-blue', null, []);
   var layerThree = new Layer('grey1', 'scene1-grey', { image: 'ring', x: 300, y: 518 }, [
-    new keepsake.Dialogue('gray', "There's something on the ground here... maybe this is... It's a ring. Looks like something out of Wonderland. ...A bit tacky if you ask me.")
+    new Dialogue('grayitalic', "There's something on the ground here...\nmaybe this is...\nIt's a ring.\nLooks like something out of Wonderland.\n...A bit tacky if you ask me.")
   ]);
 
   layerThree.attachItemCollectEvent(function() {
-    keepsake.DialogueManager.show();
+    DialogueManager.show();
     this.item.destroy();
     this.item = null;
     this.showDialogue = true;
@@ -32,8 +32,16 @@ var LevelOne = function() {
     this.layers[0].showDialogue = true;
   }).bind(this);
 
+  layerOne.dialogueCompleteEvent = function() {
+    keepsake.currentScreen.nextLevel();
+  }
+
   this.layers = [layerOne, layerTwo, layerThree];
 }
+
+LevelOne.prototype.cleanup = function() {
+  LevelHelpers.cleanup(this);
+};
 
 LevelOne.prototype.getCurrentLayer = function() {
   return this.layers[this.currentLayer];
@@ -49,7 +57,5 @@ LevelOne.prototype.stage = function() {
 }
 
 LevelOne.prototype.switchLayer = function(i) {
-  this.getCurrentLayer().hide();
-  this.currentLayer = i;
-  this.getCurrentLayer().stage();
+  LevelHelpers.switchLayer(this, i);
 }

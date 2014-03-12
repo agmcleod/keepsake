@@ -1,18 +1,18 @@
-keepsake.Dialogue = function(font, text) {
+Dialogue = function(font, text) {
   this.font = font;
   this.text = text;
 }
 
-keepsake.Dialogue.prototype.destroyBitmapText = function() {
+Dialogue.prototype.destroyBitmapText = function() {
   if(this.bitmapText) {
     this.bitmapText.destroy();
   }
 }
 
-keepsake.Dialogue.prototype.stageBitmapText = function() {
-  this.bitmapText = game.add.bitmapText(keepsake.Dialogue.LEFT_TEXT_PADDING, keepsake.Dialogue.Y, this.font, this.text, 32);
+Dialogue.prototype.stageBitmapText = function() {
+  this.bitmapText = game.add.bitmapText(Dialogue.LEFT_TEXT_PADDING, Dialogue.Y, this.font, this.text, 32);
 }
 
-keepsake.Dialogue.LEFT_TEXT_PADDING = 42;
-keepsake.Dialogue.MAX_TEXT_WIDTH = 940;
-keepsake.Dialogue.Y = 495;
+Dialogue.LEFT_TEXT_PADDING = 42;
+Dialogue.MAX_TEXT_WIDTH = 940;
+Dialogue.Y = 495;

@@ -1,8 +1,8 @@
 var StartScreen = function() {
   this.dialogues = [
-    new keepsake.Dialogue('gray', "Why do we need to go back?\nThere's nothing for us there anymore."),
-    new keepsake.Dialogue('orange', "There just is. I know it. There's something\nwe forgot along the way."),
-    new keepsake.Dialogue('blue', "Are you sure? We've come so far.\nJust to go right back...")
+    new Dialogue('gray', "Why do we need to go back?\nThere's nothing for us there anymore."),
+    new Dialogue('orange', "There just is. I know it. There's something\nwe forgot along the way."),
+    new Dialogue('blue', "Are you sure? We've come so far.\nJust to go right back...")
   ];
   this.titleMusic = game.add.audio('title', 1, true);
 
@@ -12,7 +12,7 @@ var StartScreen = function() {
 StartScreen.prototype.cleanup = function() {
   this.titleMusic.stop();
   this.background.destroy();
-  keepsake.DialogueManager.cleanup();
+  DialogueManager.cleanup();
 }
 
 StartScreen.prototype.keyEvent = function(key) {
@@ -21,11 +21,11 @@ StartScreen.prototype.keyEvent = function(key) {
       this.stageDialogue();
       break;
     case 'TWO':
-      keepsake.playScreen.levelOne.startLayer = 1;
+      keepsake.playScreen.currentLevel.startLayer = 1;
       this.stageDialogue();
       break;
     case 'THREE':
-      keepsake.playScreen.levelOne.startLayer = 2;
+      keepsake.playScreen.currentLevel.startLayer = 2;
       this.stageDialogue();
       break;
   }
@@ -63,7 +63,7 @@ StartScreen.prototype.stage = function() {
 
 StartScreen.prototype.spaceBarEvent = function() {
   var nextDialogue = this.currentDialogue + 1;
-  if(keepsake.DialogueManager.switchDialogue(this.dialogues, nextDialogue, this.currentDialogue)) {
+  if(DialogueManager.switchDialogue(this.dialogues, nextDialogue, this.currentDialogue)) {
     this.currentDialogue++;
   }
   else {
@@ -73,7 +73,7 @@ StartScreen.prototype.spaceBarEvent = function() {
 
 StartScreen.prototype.stageDialogue = function() {
   this.dialogueStaged = true;
-  keepsake.DialogueManager.stage();
+  DialogueManager.stage();
   this.currentDialogue = 0;
 
   // this may trigger garbage collection, watch for pauses

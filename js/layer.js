@@ -27,6 +27,9 @@ Layer.prototype.cleanup = function() {
   if(this.item) {
     this.item.destroy();
   }
+  for(var i = 0; i < this.dialogues.length; i++) {
+    this.dialogues[i].destroyBitmapText();
+  }
   this.background.destroy();
 }
 
@@ -39,18 +42,18 @@ Layer.prototype.hide = function() {
     this.dialogues[this.currentDialogue].destroyBitmapText();
   }
   this.background.kill();
-  keepsake.DialogueManager.hide();
+  DialogueManager.hide();
 }
 
 Layer.prototype.nextDialogue = function() {
   if(this.showDialogue) {
     var nextDialogue = this.currentDialogue + 1;
-    if(keepsake.DialogueManager.switchDialogue(this.dialogues, nextDialogue, this.currentDialogue)) {
+    if(DialogueManager.switchDialogue(this.dialogues, nextDialogue, this.currentDialogue)) {
       this.currentDialogue++;
     }
     else {
       this.showDialogue = false;
-      keepsake.DialogueManager.hide();
+      DialogueManager.hide();
       if(typeof this.dialogueCompleteEvent === 'function') {
         this.dialogueCompleteEvent();
       }
@@ -73,11 +76,11 @@ Layer.prototype.stage = function() {
   }
   this.background.revive();
   if(this.showDialogue) {
-    if(keepsake.DialogueManager.hidden) {
-      keepsake.DialogueManager.show();
+    if(DialogueManager.hidden) {
+      DialogueManager.show();
     }
     else {
-      keepsake.DialogueManager.stage();
+      DialogueManager.stage();
       this.dialogues[this.currentDialogue].stageBitmapText();
     }
   }
