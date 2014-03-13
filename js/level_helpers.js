@@ -19,6 +19,13 @@ LevelHelpers.finishTransition = function(level) {
 }
 
 LevelHelpers.switchLayer = function(level, i) {
+  if(level.tween) {
+    level.tween.stop();
+    level.percent = 0;
+  }
+  if(level.graphics) {
+    LevelHelpers.finishTransition(level);
+  }
   level.getCurrentLayer().hide();
   level.currentLayer = i;
   level.getCurrentLayer().stage();
@@ -32,6 +39,6 @@ LevelHelpers.transitionIn = function(level, time) {
   level.graphics = game.add.graphics(0, 0);
   level.transitioning = true;
   level.percent = 100;
-  var tween = game.add.tween(level).to({ percent: 0 }, time, Phaser.Easing.Linear.None, true);
-  tween.onComplete.add(level.finishTransition, level);
+  level.tween = game.add.tween(level).to({ percent: 0 }, time, Phaser.Easing.Linear.None, true);
+  level.tween.onComplete.add(level.finishTransition, level);
 }
