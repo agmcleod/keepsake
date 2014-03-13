@@ -34,34 +34,34 @@ function preload() {
   // audio
 
   // shared
-  game.load.audio('inventory', ['data/music/inventory.mp3']);
-  game.load.audio('title', ['data/music/title.mp3']);
-  game.load.audio('transition', ['data/music/transition.mp3']);
+  game.load.audio('inventory', ['data/music/inventory.ogg']);
+  game.load.audio('title', ['data/music/title.ogg']);
+  game.load.audio('transition', ['data/music/transition.ogg']);
 
   // scene 1
-  game.load.audio('scene1-blue', ['data/music/scene1/blue.mp3']);
-  game.load.audio('scene1-grey', ['data/music/scene1/grey.mp3']);
-  game.load.audio('scene1-yellow', ['data/music/scene1/yellow.mp3']);
+  game.load.audio('scene1-blue', ['data/music/scene1/blue.ogg']);
+  game.load.audio('scene1-grey', ['data/music/scene1/grey.ogg']);
+  game.load.audio('scene1-yellow', ['data/music/scene1/yellow.ogg']);
 
   // scene 2
-  game.load.audio('scene2-blue', ['data/music/scene2/blue.mp3']);
-  game.load.audio('scene2-grey', ['data/music/scene2/grey.mp3']);
-  game.load.audio('scene2-yellow', ['data/music/scene2/yellow.mp3']);
+  game.load.audio('scene2-blue', ['data/music/scene2/blue.ogg']);
+  game.load.audio('scene2-grey', ['data/music/scene2/grey.ogg']);
+  game.load.audio('scene2-yellow', ['data/music/scene2/yellow.ogg']);
 
   // scene 3
-  game.load.audio('scene3-blue', ['data/music/scene3/blue.mp3']);
-  game.load.audio('scene3-grey', ['data/music/scene3/grey.mp3']);
-  game.load.audio('scene3-yellow', ['data/music/scene3/yellow.mp3']);
+  game.load.audio('scene3-blue', ['data/music/scene3/blue.ogg']);
+  game.load.audio('scene3-grey', ['data/music/scene3/grey.ogg']);
+  game.load.audio('scene3-yellow', ['data/music/scene3/yellow.ogg']);
 
   // scene 4
-  game.load.audio('blue', ['data/music/scene4/blue.mp3']);
-  game.load.audio('bluegrey', ['data/music/scene4/bluegrey.mp3']);
-  game.load.audio('bluegreyyellow', ['data/music/scene4/bluegreyyellow.mp3']);
-  game.load.audio('blueyellow', ['data/music/scene4/blueyellow.mp3']);
-  game.load.audio('finale', ['data/music/scene4/finale.mp3']);
-  game.load.audio('grey', ['data/music/scene4/grey.mp3']);
-  game.load.audio('greyyellow', ['data/music/scene4/greyyellow.mp3']);
-  game.load.audio('yellow', ['data/music/scene4/yellow.mp3']);
+  game.load.audio('blue', ['data/music/scene4/blue.ogg']);
+  game.load.audio('bluegrey', ['data/music/scene4/bluegrey.ogg']);
+  game.load.audio('bluegreyyellow', ['data/music/scene4/bluegreyyellow.ogg']);
+  game.load.audio('blueyellow', ['data/music/scene4/blueyellow.ogg']);
+  game.load.audio('finale', ['data/music/scene4/finale.ogg']);
+  game.load.audio('grey', ['data/music/scene4/grey.ogg']);
+  game.load.audio('greyyellow', ['data/music/scene4/greyyellow.ogg']);
+  game.load.audio('yellow', ['data/music/scene4/yellow.ogg']);
 
   game.load.bitmapFont('black', 'data/font/blackfont.png', 'data/font/blackfont.xml');
   game.load.bitmapFont('blackitalic', 'data/font/blackitalicfont.png', 'data/font/blackitalicfont.xml');
