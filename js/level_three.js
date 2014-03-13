@@ -7,6 +7,7 @@ var LevelThree = function() {
   ], false);
 
   layerOne.attachItemCollectEvent(function() {
+    keepsake.playScreen.pickupSound.play();
     DialogueManager.show();
     this.item.destroy();
     this.item = null;

@@ -21,6 +21,7 @@ var LevelOne = function() {
   ]);
 
   layerThree.attachItemCollectEvent(function() {
+    keepsake.playScreen.pickupSound.play();
     DialogueManager.show();
     this.item.destroy();
     this.item = null;

@@ -6,6 +6,7 @@ var PlayScreen = function() {
   this.levels = [levelOne, levelTwo, levelThree, levelFour];
   this.currentLevelIndex = 0;
   this.currentLevel = this.levels[0];
+  this.pickupSound = game.add.audio('inventory', 1, false);
 }
 
 PlayScreen.prototype.keyEvent = function(key) {
