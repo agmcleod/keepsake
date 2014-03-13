@@ -1,0 +1,12 @@
+{
+  "name": "keepsake",
+  "version": "1.0",
+  "main": "index.html",
+  "window": {
+    "toolbar": false,
+    "width": 1024,
+    "height": 768,
+    "position": "center",
+    "resizable": false
+  }
+}
